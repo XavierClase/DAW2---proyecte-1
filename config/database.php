@@ -7,7 +7,6 @@
             if ($con === false) {
                 die("ERROR!¡!¡!¡!: No te puedes conectar a la bbdd (poner codgio de error sin que de error)");
             } else {
-                echo 'conectado';
                 return $con;
             }
         }

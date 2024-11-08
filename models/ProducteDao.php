@@ -18,6 +18,23 @@
             $con->close();
             return $productes;
         }
+        
+        public static function getNovetats()
+        {
+            $con = DataBase::connect();
+            // Seleccionem els últims quatre productes afegits, ordenant per id en ordre descendent
+            $stmt = $con->prepare("SELECT * FROM Productes ORDER BY ID_PRODUCTE DESC LIMIT 7");
+            $stmt->execute();
+            $result = $stmt->get_result();
+    
+            $novetats = [];
+            while ($producte = $result->fetch_object("Producte")) {
+                $novetats[] = $producte;
+            }
+            $con->close();
+            return $novetats;
+        }
+        
+        
     }
 
-?>

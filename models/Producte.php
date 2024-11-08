@@ -10,6 +10,7 @@
         protected $categoria;
         protected $disponibilitat;
         protected $descompte;
+        protected $imatge;
 
         public function __construct() {
             
@@ -83,6 +84,18 @@
         public function setDescompte($descompte)
         {
                 $this->descompte = $descompte;
+
+                return $this;
+        }
+
+        public function getImatge()
+        {
+                return $this->imatge;
+        }
+
+        public function setImatge($imatge)
+        {
+                $this->imatge = $imatge;
 
                 return $this;
         }

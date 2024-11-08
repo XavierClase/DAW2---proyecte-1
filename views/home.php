@@ -50,7 +50,21 @@
 
         <section class="home-section3-novetats">
             <h2>NOVETATS</h2>
-            
+            <div class="novetats-div">
+                <?php
+                    foreach ($productes as $prodcute) {
+                ?>
+                    <div class="novetat">
+                            <a href="#">
+                                <div class="novetat-imatge" style="background-image: url('<?=$prodcute->getImatge()?>');">
+                                </div>
+                            </a>
+                            <a href="#"><h3><?=$prodcute->getNom()?></h3></a>
+                            <p><?=$prodcute->getPreu()?>€</p>
+                        </div> 
+                <?php } ?>          
+            </div>
+        
         </section>
     
     </main>

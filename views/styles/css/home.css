@@ -63,3 +63,84 @@
     flex-direction: column;
     justify-content: flex-end;
 }
+
+.home-section3-novetats {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 80px;
+}
+
+.home-section3-novetats h2{
+    font-weight: bold;
+    color: black;
+}
+
+.novetats-div {
+    width: 90vw;
+    height: 500px;
+    border-bottom: 2px solid black;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden; /* Oculta el desplazamiento vertical si aparece */
+    white-space: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    
+    /* Ocultar barra de desplazamiento en Chrome, Safari y Edge */
+    -webkit-overflow-scrolling: touch; /* Para suavidad en móviles */
+}
+  
+/* Ocultar barra de desplazamiento en Chrome, Safari y Edge */
+.novetats-div::-webkit-scrollbar {
+    display: none;
+}
+
+/* Ocultar barra de desplazamiento en Firefox */
+.novetats-div {
+    scrollbar-width: none;
+}
+
+
+.novetats-div a {
+    display: block; 
+    text-decoration: none;
+}
+
+.novetat {
+    height: 330px;
+    min-width: 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: border 0.5s;
+    border: 1px solid transparent; 
+}
+
+.novetat:hover {
+    border: 1px solid black; 
+}
+
+.novetat-imatge {
+    width: 230px;
+    height: 230px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.novetat h3 {
+    color: black;
+    font-weight: bold;
+}
+.novetat h3:hover {
+    transition: 0.3s;
+    color: #FDBE10;
+}
+
+.novetat p {
+    color: #222222;
+    font-weight: bold;
+}

@@ -1,12 +1,12 @@
 @font-face {
     font-family: 'RobotoCondensed';
-    src: url('views/styles/Roboto_Condensed/static/RobotoCondensed-Regular.ttf') format('truetype'); 
+    src: url('../fonts/Roboto_Condensed/static/RobotoCondensed-Regular.ttf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'RobotoCondensed';
-    src: url('views/styles/Roboto_Condensed/static/RobotoCondensed-Bold.ttf') format('truetype'); 
+    src: url('../fonts/Roboto_Condensed/static/RobotoCondensed-Bold.ttf') format('truetype'); 
     font-weight: bold;
     font-style: normal;
 }
