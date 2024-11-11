@@ -10,13 +10,33 @@
     justify-content: space-evenly;
 }
 
+
 .home-section1 div {
+    position: relative; 
     min-width: 420px;
     min-height: 420px;
-    background-color: rgb(55, 54, 54);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home-section1 div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 1%, rgba(0, 0, 0, 0) 40%); /* Color con opacidad ajustable */
+    z-index: 1; 
+}
+
+.home-section1 div > * {
+    position: relative;
+    z-index: 2;
 }
 
 .home-section-links{
@@ -58,11 +78,31 @@
     min-width: 540px;
     min-height: 370px;
     max-height: 370px;
-    background-color: rgb(55, 54, 54);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
 }
+
+.home-section2 div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 1%, rgba(0, 0, 0, 0) 40%); /* Color con opacidad ajustable */
+    z-index: 1; 
+}
+
+.home-section2 div > * {
+    position: relative;
+    z-index: 2;
+}
+
 
 .home-section3-novetats {
     display: flex;
@@ -82,23 +122,23 @@
     border-bottom: 2px solid black;
     display: flex;
     overflow-x: auto;
-    overflow-y: hidden; /* Oculta el desplazamiento vertical si aparece */
+    overflow-y: hidden; 
     white-space: nowrap;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
     
-    /* Ocultar barra de desplazamiento en Chrome, Safari y Edge */
-    -webkit-overflow-scrolling: touch; /* Para suavidad en móviles */
+
+    -webkit-overflow-scrolling: touch; 
 }
   
-/* Ocultar barra de desplazamiento en Chrome, Safari y Edge */
+
 .novetats-div::-webkit-scrollbar {
     display: none;
 }
 
-/* Ocultar barra de desplazamiento en Firefox */
+
 .novetats-div {
     scrollbar-width: none;
 }
@@ -143,4 +183,26 @@
 .novetat p {
     color: #222222;
     font-weight: bold;
+}
+
+/* IMATGES */
+
+#home-section1-menjarsPreparats {
+    background-image: url(../imatges/productes/menjars/menjars-preparats/truita-patates.webp);
+}
+
+#home-section1-begudes {
+    background-image: url(../imatges/productes/begudes/vins/vaso-vino-uvas-barriles-madera-frescos_1268-27965.webp);
+}
+
+#home-section1-postres {
+    background-image: url(../imatges/productes/postres/postres-normals/crema-catalana.webp);
+}
+
+#home-section1-menjarsDeshidratats {
+    background-image: url(../imatges/productes/menjars/menjars-deshidratats/deshidratat-vega.webp);
+}
+
+#home-section1-cerveses {
+    background-image: url(../imatges/productes/begudes/cerveses/cervesa-san-miguel.webp);
 }
