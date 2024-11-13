@@ -18,6 +18,25 @@
             $con->close();
             return $productes;
         }
+
+        public static function getCategoria($categoria)
+        {
+            $con = DataBase::connect();
+            $stmt = $con->prepare("SELECT * FROM Productes WHERE categoria = ?");
+            $stmt->bind_param("s", $categoria);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            $productes = [];
+            while($producte = $result->fetch_object("Producte")) {
+                $productes[] = $producte;
+            }
+
+            $stmt->close(); 
+            $con->close(); 
+            return $productes;
+        }
+
         
         public static function getNovetats()
         {

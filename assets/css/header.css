@@ -1,5 +1,5 @@
 header {
-    min-height: 118px;
+    min-height: 16vh;
     background-color: #222222;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,6 @@ header {
     display: flex;
     align-items: center;
 }
-
 
 .header-bottom {
     flex: 4;
@@ -101,3 +100,38 @@ header {
 .header-right-icons a:hover {
     color: #FDBE10;
 }
+
+
+
+/*  HOVER LINKS */
+
+.links-hover {
+    position: absolute;
+    background-color: #222222;
+    height: 300px;
+    width: auto;
+    z-index: 5;
+    display: none;
+    padding: 40px;
+}
+
+.links-hover ul {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.links-hover h3 {
+    color: white;
+    font-weight: bold;
+}
+
+.links-hover a {
+    color: white;
+    text-decoration: none;
+}
+.links-hover a:hover {
+    color: #FDBE10;
+    transition: 0.5s;
+}
+

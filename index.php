@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Home</title> <link rel="stylesheet" href="./views/styles/css/style.css">
+    <title>Home</title> 
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/carta.css">
 </head>
 <body>
     <?php
         include_once('config/parameters.php');
         include_once('controllers/homeController.php');
+        include_once('controllers/cartaController.php');    
         include_once('views/header.php');
 
         // Controlador por defecto
@@ -26,7 +32,12 @@
 
             // Verifica si el método (acción) existe en el controlador
             if (method_exists($controller, $action)) {
-                $controller->$action();
+                // Comprueba si la acción necesita un parámetro (como en el caso de "categoria")
+                if ($action === 'categoria' && isset($_GET['categoria'])) {
+                    $controller->$action($_GET['categoria']); // Pasa la categoría como argumento
+                } else {
+                    $controller->$action(); // Llama al método sin argumentos
+                }
             } else {
                 echo "No existe la acción " . $action . " en el controlador " . $nombre_controller;
             }
@@ -36,6 +47,7 @@
 
         include_once('views/footer.php');
     ?>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
