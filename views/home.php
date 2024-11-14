@@ -46,13 +46,13 @@
 
     <section class="home-section2">
         <div id="home-section1-menjarsDeshidratats">
-            <a href="" class="home-section-links">
+            <a href="?controller=carta&action=categoria&categoria=MENJARS%20DESHIDRATATS" class="home-section-links">
                 <h3>MENJARS DESHIDRATATS</h3>
                 <button class="home-buttons">COMPRAR JA</button>
             </a>
         </div>
         <div id="home-section1-cerveses">
-            <a href="" class="home-section-links">
+            <a href="?controller=carta&action=categoria&categoria=CERVESES" class="home-section-links">
                 <h3>CERVESES</h3>
                 <button class="home-buttons">COMPRAR JA</button>
             </a>

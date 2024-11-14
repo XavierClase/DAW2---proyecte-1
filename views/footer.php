@@ -38,18 +38,18 @@
                         <th>POSTRES</th>
                     </tr>
                     <tr>
-                        <td><a href="#">MENJAR PREPARAT</a></td>
-                        <td><a href="#">VINS</a></td>
-                        <td><a href="#">POSTRES CLÀSICS</a></td>
+                        <td><a href="?controller=carta&action=categoria&categoria=MENJARS%20PREPARATS">MENJARS PREPARATS</a></td>
+                        <td><a href="?controller=carta&action=categoria&categoria=VINS">VINS</a></td>
+                        <td><a href="?controller=carta&action=categoria&categoria=POSTRES%20CLASICS">POSTRES CLÀSICS</a></td>
                     </tr>
                     <tr>
-                        <td><a href="#">MENJAR DESHIDRATAT</a></td>
-                        <td><a href="#">CERVESES</a></td>
-                        <td><a href="#">POSTRES RURALS</a></td>
+                        <td><a href="?controller=carta&action=categoria&categoria=MENJARS%20DESHIDRATATS">MENJARS DESHIDRATATS</a></td>
+                        <td><a href="?controller=carta&action=categoria&categoria=CERVESES">CERVESES</a></td>
+                        <td><a href="?controller=carta&action=categoria&categoria=POSTRES%20RURALS">POSTRES RURALS</a></td>
                     </tr>
                     <tr>
-                        <td><a href="#">APERITIUS DE MUNTANYA</a></td>
-                        <td><a href="#">REFRESCOS</a></td>
+                        <td><a href="?controller=carta&action=categoria&categoria=APERITIUS%20MUNTANYA">APERITIUS DE MUNTANYA</a></td>
+                        <td><a href="?controller=carta&action=categoria&categoria=REFRESCOS">REFRESCOS</a></td>
                     </tr>
             </table>
         </div>
