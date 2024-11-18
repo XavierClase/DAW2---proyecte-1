@@ -1,0 +1,176 @@
+.carro-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 85vh;
+}
+
+.carro-migas {
+    height: 30px;
+}
+
+.carro {
+    width: 90%;
+}
+
+.carro h1{
+    font-weight: bold;
+    display: flex;
+}
+
+.carro-span-titol {
+    display: flex;
+    align-items: flex-end;
+}
+
+.carro-dades {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.carro-productes {
+    width: 55%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.carro-producte {
+    width: 100%;
+    height: 190px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.carro-producte-foto {
+    background-color: violet;
+    min-height: 190px;
+    min-width: 190px;
+}
+
+.carro-producte-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 520px;
+}
+
+.carro-producte-info div{
+    display: flex;
+    flex-direction: column;
+}
+
+.carro-producte-info div span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.carro-producte-info h2 {
+    font-weight: bold;
+}
+
+#tipus-producte-carro {
+    display: flex;
+    flex-direction: row;
+}
+
+#span-tipusProducte-bold {
+    font-weight: bold;
+}
+
+#preu-producte-carro {
+    font-weight: bold;
+}
+
+.carro-producte-span{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.carro-producte-span:hover{
+    color: #FDBE10;
+    transition: 0.3s;
+}
+
+.carro-producte-span svg {
+    height: 30px;
+    width: 30px;
+}
+
+.carro-resum-comanda {
+    width: 26%;
+    height: 400px;
+}
+
+#resum-comanda-titol {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+#codi-promocional-p {
+    font-weight: bold;
+}
+
+.carro-resum-comanda form{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 55px;
+}
+
+.carro-resum-comanda form input{
+    border: 1px solid black;
+    height: 40px;
+    width: 230px;
+    padding: 5px;
+}
+
+.carro-resum-comanda form input:focus{
+    outline: none;
+}
+
+.carro-resum-comanda form button{
+    border: 1.4px solid black;
+    background-color: white;
+    color: #222222;
+    font-weight: bold;
+    height: 40px;
+    width: 100px;
+    margin-left: 10px;
+}
+
+.carro-resum-comanda form button:hover{
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+}
+
+.carro-resum-comanda span {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+#carro-span-totalComanda {
+    padding-bottom: 55px;
+}
+
+#tramitar-comanda-button {
+    border: none;
+    outline: none;
+    background-color: #FDBE10;
+    width: 100%;
+    height: 40px;
+    color: black;
+    font-weight: bold;
+}
+
+#tramitar-comanda-button:hover {
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+}

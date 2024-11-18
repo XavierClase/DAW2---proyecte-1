@@ -2,8 +2,7 @@
 
     class Producte {
 
-        const TYPE_MENJAR = 1;
-
+        protected $ID_Producte;
         protected $nom;
         protected $descripcio;
         protected $preu;
@@ -96,6 +95,18 @@
         public function setImatge($imatge)
         {
                 $this->imatge = $imatge;
+
+                return $this;
+        }
+
+        public function getID_Producte()
+        {
+                return $this->ID_Producte;
+        }
+
+        public function setID_Producte($ID_Producte)
+        {
+                $this->ID_Producte = $ID_Producte;
 
                 return $this;
         }

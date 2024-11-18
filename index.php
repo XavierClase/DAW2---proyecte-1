@@ -10,12 +10,18 @@
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/carta.css">
+    <link rel="stylesheet" href="assets/css/detallsProducte.css">
+    <link rel="stylesheet" href="assets/css/carro.css">
+    <link rel="stylesheet" href="assets/css/registre.css">
 </head>
 <body>
     <?php
         include_once('config/parameters.php');
         include_once('controllers/homeController.php');
-        include_once('controllers/cartaController.php');    
+        include_once('controllers/cartaController.php');   
+        include_once('controllers/detallsProducteController.php'); 
+        include_once('controllers/carroController.php');
+        include_once('controllers/autenticacioController.php');
         include_once('views/header.php');
 
         // Controlador por defecto
@@ -35,6 +41,8 @@
                 // Comprueba si la acción necesita un parámetro (como en el caso de "categoria")
                 if ($action === 'categoria' && isset($_GET['categoria'])) {
                     $controller->$action($_GET['categoria']); // Pasa la categoría como argumento
+                } elseif ($action === 'seleccioProducte' && isset($_GET['idProducte'])) {
+                    $controller->$action($_GET['idProducte']);
                 } else {
                     $controller->$action(); // Llama al método sin argumentos
                 }

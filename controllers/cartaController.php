@@ -3,15 +3,25 @@
     include_once('models/Producte.php');
 
     class cartaController {
-        public function index()
-        {
-            $productes = ProducteDao::getAll();
+        public function index() {
+            $order = $_GET['order'] ?? 'posicio';
+            $productes = ProducteDao::getAll($order);
             include_once 'views/carta.php';
         }
-        public function categoria($categoria)
-        {
-            $descripcioCategoria = "";
+    
+        public function categoria($categoria) {
+            $descripcioCategoria = $this->getDescripcioCategoria($categoria);
+            $order = $_GET['order'] ?? 'posicio';
             
+            $currentOrder = $_GET['order'] ?? 'posicio';
+            
+            if ($categoria) {
+                $productes = ProducteDao::getCategoria($categoria, $order);
+                include_once 'views/carta.php';
+            }
+        }
+    
+        private function getDescripcioCategoria($categoria) {
             switch ($categoria) {
                 case 'MENJARS PREPARATS':
                     $descripcioCategoria = "Plats tradicionals i casolans, llestos per gaudir amb el sabor i l'essència d'un bon àpat fet a mà. Des de guisats fins a receptes de tota la vida, ideal per sentir-se com a casa amb cada mossegada.";
@@ -38,17 +48,11 @@
                     $descripcioCategoria = "Dolços de tota la vida, aquells que sempre trobem a casa de l’àvia. Des de flams fins a pudins, són postres senzills però plens de records i sabor.";
                     break;
                 default:
-                    $descripcioCategoria = "Categoria no trobada";
+                    $descripcioCategoria = "";
                     break;
             }
-
-
-
-            if (isset($categoria)) {
-                $productes = ProducteDao::getCategoria($categoria);
-                include_once 'views/carta.php';
-            }
-            
+            return $descripcioCategoria;
         }
     }
+    
 ?>

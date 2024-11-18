@@ -4,45 +4,64 @@
 
 
     class ProducteDao {
-        public static function getAll()
-        {
+        public static function getAll($order = 'posicio') {
             $con = DataBase::connect();
-            $stmt = $con->prepare("SELECT * FROM Productes");
+            
+            $query = "SELECT * FROM Productes";
+            $query .= self::getOrderByClause($order);
+            
+            $stmt = $con->prepare($query);
             $stmt->execute();
             $result = $stmt->get_result();
-
+    
             $productes = [];
             while($producte = $result->fetch_object("Producte")) {
                 $productes[] = $producte;
             }
+            
             $con->close();
             return $productes;
         }
-
-        public static function getCategoria($categoria)
-        {
+    
+        public static function getCategoria($categoria, $order = 'posicio') {
             $con = DataBase::connect();
-            $stmt = $con->prepare("SELECT * FROM Productes WHERE categoria = ?");
-            $stmt->bind_param("s", $categoria);
+            
+            $query = "SELECT * FROM Productes WHERE categoria = ? OR precategoria = ?";
+            $query .= self::getOrderByClause($order);
+        
+            $stmt = $con->prepare($query);
+        
+            $stmt->bind_param("ss", $categoria, $categoria);
+        
             $stmt->execute();
             $result = $stmt->get_result();
-
+        
             $productes = [];
-            while($producte = $result->fetch_object("Producte")) {
+            while ($producte = $result->fetch_object("Producte")) {
                 $productes[] = $producte;
             }
-
-            $stmt->close(); 
-            $con->close(); 
+            
+            $stmt->close();
+            $con->close();
             return $productes;
         }
-
+        
+    
+        private static function getOrderByClause($order) {
+            switch ($order) {
+                case 'menor-major':
+                    return " ORDER BY preu ASC";
+                case 'major-menor':
+                    return " ORDER BY preu DESC";
+                default:
+                    return " ORDER BY ID_PRODUCTE"; 
+            }
+        }
         
         public static function getNovetats()
         {
             $con = DataBase::connect();
-            // Seleccionem els últims quatre productes afegits, ordenant per id en ordre descendent
-            $stmt = $con->prepare("SELECT * FROM Productes ORDER BY ID_PRODUCTE DESC LIMIT 7");
+            $stmt = $con->prepare("SELECT * FROM Productes ORDER BY ID_Producte DESC LIMIT 7");
             $stmt->execute();
             $result = $stmt->get_result();
     
@@ -52,6 +71,24 @@
             }
             $con->close();
             return $novetats;
+        }
+
+        public static function getProducte($idProducte)
+        {
+            $con = DataBase::connect();
+            
+            $query = "SELECT * FROM Productes WHERE ID_Producte  = ?";
+    
+            $stmt = $con->prepare($query);
+            $stmt->bind_param("s", $idProducte);
+            $stmt->execute();
+            $result = $stmt->get_result();
+    
+            $producte = $result->fetch_object("Producte");
+            
+            $stmt->close();
+            $con->close();
+            return $producte;
         }
         
         
