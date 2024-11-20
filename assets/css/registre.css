@@ -2,7 +2,20 @@
     min-height: 85vh;
 }
 
-.row {
+.login-main {
+    min-height: 85vh;
+}
+
+.login-main h1{
+    color: black;
+    font-weight: bold;
+}
+
+.login-main h4 {
+    color: black;
+}
+
+#rw-registre {
     display: flex;
     flex-direction: row;
     gap: 80px;

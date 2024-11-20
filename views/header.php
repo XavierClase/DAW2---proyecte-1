@@ -9,7 +9,7 @@
         </a>
 
         <div>
-            <a href="#">INICIAR SESIÓ</a>
+            <a href="?controller=autenticacio&action=login">INICIAR SESIÓ</a>
             <a href="?controller=autenticacio&action=registre">CREAR UN COMPTE</a>
         </div>
     </div>
@@ -74,7 +74,5 @@
         </ul>
     </nav>    
 </section>
-
-
 
 <script src="assets/scripts/menuMapping.js"></script>

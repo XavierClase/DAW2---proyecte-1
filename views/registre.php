@@ -1,8 +1,8 @@
 <main class="registre-main">
     <div class="container mt-5">
         <h1 class="mb-4">Crear un nou compte de client</h1>
-        <form action="?controller=autenticacio&action=createUsuari" method="GET">
-            <div class="row">
+        <form action="?controller=autenticacio&action=createUsuari" method="POST">
+            <div id="row-registre" class="row">
                 <!-- Informació Personal -->
                 <div class="col-md-6">
                 <h4>Informació Personal</h4>
@@ -18,10 +18,14 @@
                     <label for="data-naixement" class="form-label">Data de naixement</label>
                     <input type="date" name="dataNaixement" class="form-control" id="data-naixement">
                 </div>
+                <div class="mb-3">
+                    <label for="telefon" class="form-label">Telèfon</label>
+                    <input type="text" name="telefon" class="form-control" id="telefon">
+                </div>
                 </div>
 
                 <!-- Informació d'inici de sessió -->
-                <div class="col-md-6">
+                <div class="col-md-5">
                 <h4>Informació d'inici de sessió</h4>
                 <div class="mb-3">
                     <label for="correu" class="form-label">Correu electrònic *</label>
