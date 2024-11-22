@@ -4,6 +4,7 @@
 
         protected $ID_Usuari;
         protected $Nom;
+        protected $Cognoms;
         protected $Correu_electronic;
         protected $Contrasenya;
         protected $Telefon;
@@ -93,5 +94,17 @@
             $this->Tipus_usuari = $Tipus_usuari;
 
             return $this;
+        }
+
+        public function getCognoms()
+        {
+                return $this->Cognoms;
+        }
+
+        public function setCognoms($Cognoms)
+        {
+                $this->Cognoms = $Cognoms;
+
+                return $this;
         }
     }

@@ -14,6 +14,7 @@ header {
     justify-content: space-between;
     padding-left: 30px;
     padding-right: 10px;
+    max-height: 30px;
 }
 
 .header-top div {
@@ -135,3 +136,46 @@ header {
     transition: 0.5s;
 }
 
+
+
+.menu-loged {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-right: 50px;
+}
+
+.menu-toggle {
+    display: none !important;
+}
+
+.header-loged-links {
+    display: none !important;
+    position: absolute !important;
+    z-index: 99;
+    flex-direction: column !important;
+    margin-top: 50px;
+    background-color: black;
+}
+  
+.menu-button {
+    color: white !important;
+    padding: 10px !important;
+    border: none !important;
+    cursor: pointer !important;
+    font-size: 0.8rem !important;
+}
+  
+.header-loged-links a {
+    text-decoration: none !important;
+    color: white !important;
+    padding: 8px !important;
+}
+  
+.header-loged-links a:hover {
+    background-color: gray !important;
+}
+  
+
+.menu-toggle:checked + .menu-button + .header-loged-links {
+    display: flex !important; 
+}

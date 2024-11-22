@@ -9,10 +9,22 @@
                     <div class="mb-3">
                         <label for="correuLogin" class="form-label">Correu Electrònic *</label>
                         <input type="email" name="correuLogin" class="form-control" id="correuLogin" required>
+                        <?php
+                            if (isset($_SESSION['error_usuari'])) {
+                                echo '<div class="text-danger mt-2">' . $_SESSION['error_usuari'] . '</div>';
+                                unset($_SESSION['error_usuari']); 
+                            }
+                        ?>
                     </div>
                     <div class="mb-3">
                         <label for="contrasenyaLogin" class="form-label">Contrasenya *</label>
                         <input type="password" name="contrasenyaLogin" class="form-control" id="contrasenyaLogin" required>
+                        <?php
+                            if (isset($_SESSION['error_contra'])) {
+                                echo '<div class="text-danger mt-2">' . $_SESSION['error_contra'] . '</div>';
+                                unset($_SESSION['error_contra']); 
+                            }
+                        ?>
                     </div>
                 </div>
 

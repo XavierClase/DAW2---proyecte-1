@@ -46,7 +46,9 @@
 }
 
 .carro-producte-foto {
-    background-color: violet;
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
     min-height: 190px;
     min-width: 190px;
 }
@@ -92,7 +94,12 @@
     align-items: center;
 }
 
-.carro-producte-span:hover{
+.carro-producte-span a {
+    color: black;
+    text-decoration: none;
+}
+
+.carro-producte-span a:hover{
     color: #FDBE10;
     transition: 0.3s;
 }

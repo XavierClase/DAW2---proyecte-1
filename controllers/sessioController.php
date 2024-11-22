@@ -15,7 +15,7 @@ class sessioController {
         }
 
         // Guardar l'ID de l'usuari a la sessió
-        $_SESSION['user_id'] = $usuari->getID_Usuari();
+        $_SESSION['usuari'] = $usuari;
 
         // Confirmar que la sessió s'ha iniciat
         return true;
@@ -23,21 +23,21 @@ class sessioController {
 
     // Mètode per tancar la sessió
     public function tancarSessio() {
-        // No es necessita cridar session_start() aquí si ya está iniciada
         session_unset();
         session_destroy();
-        return true;
+        header('Location: index.php');
+        exit; 
     }
 
     // Mètode per verificar si hi ha una sessió activa
     public static function haySesionActiva() {
-        return isset($_SESSION['user_id']);
+        return isset($_SESSION['usuari']);
     }
 
     // Mètode per obtenir l'ID de l'usuari actual en sessió
     public function obtenirIdUsuariSessio() {
         if (self::haySesionActiva()) {
-            return $_SESSION['user_id'];
+            return $_SESSION['usuari'];
         }
 
         return null;

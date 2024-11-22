@@ -90,7 +90,28 @@
             $con->close();
             return $producte;
         }
+        public static function getCarroInfo($idProducte) {
+            $con = DataBase::connect();
+            $query = "SELECT ID_Producte, nom, preu, categoria, imatge FROM Productes WHERE ID_Producte = ?";
+            
+            $stmt = $con->prepare($query);
+            $stmt->bind_param("i", $idProducte); 
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            $producte = null;
+            if ($row = $result->fetch_assoc()) {
+                $producte = new Producte();
+                $producte->setID_Producte($row['ID_Producte']);
+                $producte->setNom($row['nom']);
+                $producte->setPreu($row['preu']);
+                $producte->setCategoria($row['categoria']);
+                $producte->setImatge($row['imatge']);
+            }
         
+            $stmt->close();
+            $con->close();
+            return $producte;
+        }
         
     }
-

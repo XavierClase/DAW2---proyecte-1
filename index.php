@@ -23,6 +23,7 @@
         include_once('controllers/detallsProducteController.php'); 
         include_once('controllers/carroController.php');
         include_once('controllers/autenticacioController.php');
+        include_once('controllers/sessioController.php');
         include_once('views/header.php');
 
         // Controlador por defecto

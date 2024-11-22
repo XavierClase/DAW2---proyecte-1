@@ -6,60 +6,70 @@
     class autenticacioController {
         
         public function registre() {
-            // Evita cualquier salida antes de esta línea
             include_once 'views/registre.php';
         }
 
         public function login() {
-            // Evita cualquier salida antes de esta línea
             include_once 'views/login.php';
         }
 
         public function createUsuari() {
 
-            // Asegúrate de que no haya salida antes de este código
-            $nom = $_POST['nom'];
-            $correu = $_POST['correu'];
-            $contra = $_POST['contrasenya'];
-            $confirmarContrasenya = $_POST['confirmar-contrasenya'];
-            $telefon = $_POST['telefon'];
-            $dataNaixement = $_POST['dataNaixement'];
-
-            if ($contra == $confirmarContrasenya) {
-
-                $usuari = new Usuari();
-                $usuari->setNom($nom);
-                $usuari->setCorreu_electronic($correu);
-                $usuari->setContrasenya($contra);
-                $usuari->setTelefon($telefon);
-                $usuari->setData_naixement($dataNaixement);
-
-                UsuariDao::registre($usuari);
-
-                // Realiza la redirección después de guardar el usuario
-                // Asegúrate de que no haya ninguna salida antes de esta línea
-                header('Location:?controller=autenticacio&action=login');
-                exit; // No olvides el exit después de header para evitar que el código siga ejecutándose
+            $nom = $_GET['nom'];
+            $cognoms = $_GET['cognoms'];
+            $correu = $_GET['correu'];
+            $contra = $_GET['contrasenya'];
+            $confirmarContrasenya = $_GET['confirmar-contrasenya'];
+            $telefon = $_GET['telefon'];
+            $dataNaixement = $_GET['dataNaixement'];
+        
+            $usuariAutenticar = UsuariDao::getUsuaris($correu);
+        
+            if (count($usuariAutenticar) != 0) {
+                $_SESSION['error_correu'] = 'El correu electrònic ja està registrat.';
+                header('Location: ?controller=autenticacio&action=registre');
+                exit;
+            } else {
+                if ($contra != $confirmarContrasenya) {
+                    $_SESSION['error_contra'] = 'Les contrasenyes no coincideixen';
+                    header('Location: ?controller=autenticacio&action=registre');
+                    exit;
+                } else {
+                    $usuari = new Usuari();
+                    $usuari->setNom($nom);
+                    $usuari->setCognoms($cognoms);
+                    $usuari->setCorreu_electronic($correu);
+                    $usuari->setContrasenya($contra);
+                    $usuari->setTelefon($telefon);
+                    $usuari->setData_naixement($dataNaixement);
+        
+                    UsuariDao::registre($usuari);
+        
+                    header('Location:?controller=autenticacio&action=login');
+                    exit;
+                }
             }
         }
+        
 
         public function loginUsuari() {
-            $correu = $_POST['correuLogin'];
-            $contra = $_POST['contrasenyaLogin'];
+            $correu = $_GET['correuLogin'];
+            $contra = $_GET['contrasenyaLogin'];
 
             $usuari = usuariDao::getUsuaris($correu);
 
-            if (count($usuari) == 1) {
-                if ($usuari[0]->getContrasenya() == $contra) {
-                    // Llama a la sesión solo después de la verificación
+            if (count($usuari) != 1) {
+                $_SESSION['error_usuari'] = "L'usuari no existeix";
+                header('Location:?controller=autenticacio&action=login');                
+            } else {
+                if ($usuari[0]->getContrasenya() != $contra) {
+                    $_SESSION['error_contra'] = "Contrasenya incorrecta";
+                    header('Location:?controller=autenticacio&action=login');         
+                } else {
                     sessioController::iniciarSesio($usuari[0]);
                     header('Location: index.php');
-                    exit; // No olvides el exit después de header para evitar que el código siga ejecutándose
-                } else {
-                    echo "Contraseña incorrecta";
+                    exit; 
                 }
-            } else {
-                echo "Usuario inexistent";
             }
         }
     }

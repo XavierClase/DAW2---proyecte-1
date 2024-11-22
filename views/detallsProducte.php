@@ -16,7 +16,11 @@
             <p id="descripcioProducteDetalls"><?=$producte->getDescripcio()?></p>
 
             <?php if ($producte->getDisponibilitat() == 1) {?>
-                <button class="button-anyadir-activat">ANYADIR AL CARRO</button>
+                <form action="?controller=carro&action=anyadir" method="post">
+                    <input type="number" name="quantitat" id="quantitat">
+                    <input type="hidden" name="id"  value="<?=$producte->getID_Producte()?>">
+                    <button class="button-anyadir-activat">ANYADIR AL CARRO</button>
+                </form>
             <?php } else { ?>
                 <button class="button-anyadir-desactivat">ESGOTAT</button>
             <?php } ?>

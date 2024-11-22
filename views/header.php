@@ -8,10 +8,25 @@
             AJUDA
         </a>
 
-        <div>
-            <a href="?controller=autenticacio&action=login">INICIAR SESIÓ</a>
-            <a href="?controller=autenticacio&action=registre">CREAR UN COMPTE</a>
-        </div>
+        <?php
+            if (!isset($_SESSION['usuari'])) {?>
+                <div>
+                    <a href="?controller=autenticacio&action=login">INICIAR SESIÓ</a>
+                    <a href="?controller=autenticacio&action=registre">CREAR UN COMPTE</a>
+                </div>
+            <?php } else { ?>
+                <div class="menu-loged">
+                    <input type="checkbox" id="toggle" class="menu-toggle">
+                    <label for="toggle" class="menu-button"><?=$_SESSION['usuari']->getNom() . ' ' . $_SESSION['usuari']->getCognoms()?> V</label>
+                    <div class="header-loged-links">
+                        <a href="#">MI CUENTA</a>
+                        <a href="#">MI LISTA DE DESEOS</a>
+                        <a href="?controller=sessio&action=tancarSessio">CERRAR SESIÓN</a>
+                    </div>
+                </div>
+
+            <?php }?>
+        
     </div>
     <div class="header-bottom">
         <nav class="header-links-nav">
