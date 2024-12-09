@@ -132,7 +132,7 @@
     border-bottom: 2px solid black;
     display: flex;
     overflow-x: auto;
-    overflow-y: hidden; 
+    overflow-y: none; 
     white-space: nowrap;
     flex-direction: row;
     align-items: center;

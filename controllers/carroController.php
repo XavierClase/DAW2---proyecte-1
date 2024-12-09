@@ -13,13 +13,24 @@
                 $total_unitats += $preu_per_tanda;
             }
 
+            
+
             include_once 'views/carro.php';
+        }
+
+        public function slide() {
+            $carro = $_SESSION['carro'] ?? [];
+            $quantitatProductes = count($carro);
+
+            $total_unitats = $_SESSION['carro_total'];
+
+
         }
 
         public function anyadir() {
             $producte_id = $_POST['id'] ?? null;
             $quantitat = $_POST['quantitat'] ?? 1;
-
+        
             if ($producte_id) {
                 $producte = ProducteDao::getCarroInfo($producte_id);                
                 if ($producte) {
@@ -31,23 +42,28 @@
                         'imatge' => $producte->getImatge(),
                         'quantitat' => $quantitat,
                     ];
-
+        
                     if (!isset($_SESSION['carro'])) {
                         $_SESSION['carro'] = [];
+                        $_SESSION['carro_total'] = 0; 
                     }
-    
+        
                     if (isset($_SESSION['carro'][$producte_id])) {
+                        $quantitat_antiga = $_SESSION['carro'][$producte_id]['quantitat'];
                         $_SESSION['carro'][$producte_id]['quantitat'] += $quantitat;
+        
+                        $_SESSION['carro_total'] -= $producte->getPreu() * $quantitat_antiga;
+                        $_SESSION['carro_total'] += $producte->getPreu() * $_SESSION['carro'][$producte_id]['quantitat'];
                     } else {
                         $_SESSION['carro'][$producte_id] = $producto_data;
+                        $_SESSION['carro_total'] += $producte->getPreu() * $quantitat;
                     }
-
-
                 }
             }
+        
             header('Location: ?controller=home&action=index');
-    
         }
+        
 
         public function eliminar() {
             
@@ -64,19 +80,6 @@
         // public function clear() {
         //     unset($_SESSION['carrito']);
         //     header("Location: index.php?controller=carrito&action=index");
-        // }
-    
-        // public function checkout() {
-        //     require_once 'models/Pedido.php';
-    
-        //     if (!empty($_SESSION['carrito'])) {
-        //         $pedido = new Pedido();
-        //         $pedido->guardar($_SESSION['carrito']);
-        //         unset($_SESSION['carrito']); 
-        //         header("Location: index.php?controller=carrito&action=success");
-        //     } else {
-        //         header("Location: index.php?controller=carrito&action=index");
-        //     }
         // }
     
     }

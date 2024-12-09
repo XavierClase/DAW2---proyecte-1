@@ -58,9 +58,11 @@
                 </span>
                 <span id="carro-span-totalComanda">
                     <strong>Total de comanda</strong>
-                    <p>12 €</p>
+                    <p><?=$total_unitats?> €</p>
                 </span>
-                <button id="tramitar-comanda-button">TRAMITAR COMANDA</button>
+                <a href="?controller=checkout&action=index">
+                    <button id="tramitar-comanda-button">TRAMITAR COMANDA</button>
+                </a>
             </div>
         </section>
     </section>

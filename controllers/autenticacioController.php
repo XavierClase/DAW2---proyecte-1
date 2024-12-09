@@ -15,13 +15,13 @@
 
         public function createUsuari() {
 
-            $nom = $_GET['nom'];
-            $cognoms = $_GET['cognoms'];
-            $correu = $_GET['correu'];
-            $contra = $_GET['contrasenya'];
-            $confirmarContrasenya = $_GET['confirmar-contrasenya'];
-            $telefon = $_GET['telefon'];
-            $dataNaixement = $_GET['dataNaixement'];
+            $nom = $_POST['nom'];
+            $cognoms = $_POST['cognoms'];
+            $correu = $_POST['correu'];
+            $contra = $_POST['contrasenya'];
+            $confirmarContrasenya = $_POST['confirmar-contrasenya'];
+            $telefon = $_POST['telefon'];
+            $dataNaixement = $_POST['dataNaixement'];
         
             $usuariAutenticar = UsuariDao::getUsuaris($correu);
         
@@ -53,8 +53,8 @@
         
 
         public function loginUsuari() {
-            $correu = $_GET['correuLogin'];
-            $contra = $_GET['contrasenyaLogin'];
+            $correu = $_POST['correuLogin'];
+            $contra = $_POST['contrasenyaLogin'];
 
             $usuari = usuariDao::getUsuaris($correu);
 
@@ -71,6 +71,7 @@
                     exit; 
                 }
             }
+            
         }
     }
 ?>

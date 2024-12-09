@@ -90,6 +90,23 @@
             $con->close();
             return $producte;
         }
+        public static function getNom($idProducte)
+        {
+            $con = DataBase::connect();
+
+            $query = "SELECT nom FROM Productes WHERE ID_Producte  = ?";
+
+            $stmt = $con->prepare($query);
+            $stmt->bind_param("s", $idProducte);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            $producte = $result->fetch_object("Producte");
+
+            $stmt->close();
+            $con->close();
+            return $producte;
+        }
         public static function getCarroInfo($idProducte) {
             $con = DataBase::connect();
             $query = "SELECT ID_Producte, nom, preu, categoria, imatge FROM Productes WHERE ID_Producte = ?";

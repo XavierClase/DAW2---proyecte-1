@@ -3,7 +3,6 @@
         <h1 class="mb-4">Crear un nou compte de client</h1>
         <form action="?controller=autenticacio&action=createUsuari" method="POST">
             <div id="row-registre" class="row">
-                <!-- Informació Personal -->
                 <div class="col-md-6">
                     <h4>Informació Personal</h4>
                     <div class="mb-3">
@@ -24,7 +23,6 @@
                     </div>
                 </div>
 
-                <!-- Informació d'inici de sessió -->
                 <div class="col-md-5">
                     <h4>Informació d'inici de sessió</h4>
                     <div class="mb-3">

@@ -35,7 +35,6 @@
             
             $stmt->bind_param("s", $correuUsuari); 
             
-            // Ejecutar la consulta
             $stmt->execute();
             
             $result = $stmt->get_result();
@@ -54,4 +53,57 @@
             return $usuaris;
         }
 
+        public static function getID($nomUsuari)
+        {
+            $con = DataBase::connect();
+    
+            $query = "SELECT ID_Usuari FROM Usuaris WHERE Nom = ?";
+    
+            $stmt = $con->prepare($query);
+            if (!$stmt) {
+                die("Error al preparar la consulta: " . $con->error);
+            }
+    
+            $stmt->bind_param("s", $nomUsuari);
+    
+            $stmt->execute();
+    
+            $result = $stmt->get_result();
+            if (!$result) {
+                die("Error al obtenir resultats: " . $stmt->error);
+            }
+    
+            $ID_Usuari = $result;
+    
+            $stmt->close();
+            $con->close();
+    
+            return $ID_Usuari;
+        }
+
+        public static function updateUsuari($ID_Usuari, $nouNom, $nouCognom, $nouData_naixement, $nouTelefon)
+        {
+            $con = DataBase::connect();
+
+            $stmt = $con->prepare("UPDATE Usuaris SET Nom = ?, Cognoms = ?, Telefon = ?, Data_naixement = ? WHERE ID_Usuari = ?");
+
+            $stmt->bind_param("ssssi", $nouNom, $nouCognom, $nouTelefon, $nouData_naixement, $ID_Usuari);
+
+            $stmt->execute();
+
+            $stmt->close();
+        }
+
+        public static function updatePassword($ID_Usuari, $novaContrasenya)
+        {
+            $con = DataBase::connect();
+
+            $stmt = $con->prepare("UPDATE Usuaris SET Contrasenya = ? WHERE ID_Usuari = ?");
+
+            $stmt->bind_param("si", $novaContrasenya, $ID_Usuari);
+
+            $stmt->execute();
+
+            $stmt->close();
+        }
     }

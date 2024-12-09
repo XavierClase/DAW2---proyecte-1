@@ -45,3 +45,22 @@ Object.keys(menuMapping).forEach(linkId => {
 document.addEventListener('DOMContentLoaded', () => {
     Object.values(menuMapping).forEach(section => hideMenu(section));
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const carroLink = document.querySelector('.header-carro-link');
+    const carroHeader = document.querySelector('.carro-header');
+    const tancaCarroButton = document.querySelector('.tanca-carro-header');
+
+    
+    carroLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        carroHeader.classList.add('show'); 
+    });
+
+
+    tancaCarroButton.addEventListener('click', function() {
+        carroHeader.classList.remove('show'); 
+    });
+});
+

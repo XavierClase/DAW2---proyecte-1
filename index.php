@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="assets/css/detallsProducte.css">
     <link rel="stylesheet" href="assets/css/carro.css">
     <link rel="stylesheet" href="assets/css/registre.css">
+    <link rel="stylesheet" href="assets/css/checkout.css">
+    <link rel="stylesheet" href="assets/css/perfil.css">
 </head>
 <body>
     <?php
@@ -23,30 +25,28 @@
         include_once('controllers/detallsProducteController.php'); 
         include_once('controllers/carroController.php');
         include_once('controllers/autenticacioController.php');
-        include_once('controllers/sessioController.php');
+        include_once('controllers/sessioController.php');   
+        include_once('controllers/checkoutController.php');
+        include_once('controllers/perfilController.php');
         include_once('views/header.php');
 
-        // Controlador por defecto
+
         $default_controller = "home";
         $default_action = "index";
 
-        // Obtener el controlador y la acción desde la URL, o usa los valores por defecto
         $nombre_controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : $default_controller . 'Controller';
         $action = isset($_GET['action']) ? $_GET['action'] : $default_action;
 
-        // Verifica si el controlador existe
         if (class_exists($nombre_controller)) {
             $controller = new $nombre_controller();
 
-            // Verifica si el método (acción) existe en el controlador
             if (method_exists($controller, $action)) {
-                // Comprueba si la acción necesita un parámetro (como en el caso de "categoria")
                 if ($action === 'categoria' && isset($_GET['categoria'])) {
-                    $controller->$action($_GET['categoria']); // Pasa la categoría como argumento
+                    $controller->$action($_GET['categoria']); 
                 } elseif ($action === 'seleccioProducte' && isset($_GET['idProducte'])) {
                     $controller->$action($_GET['idProducte']);
                 } else {
-                    $controller->$action(); // Llama al método sin argumentos
+                    $controller->$action(); 
                 }
             } else {
                 echo "No existe la acción " . $action . " en el controlador " . $nombre_controller;

@@ -179,3 +179,139 @@ header {
 .menu-toggle:checked + .menu-button + .header-loged-links {
     display: flex !important; 
 }
+
+
+
+.carro-header {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    right: -430px; 
+    width: 430px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: right 0.5s ease; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.carro-header.show {
+    right: 0; 
+}
+
+.tanca-carro-header {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #ffffff00;
+    color: black;
+    cursor: pointer;
+}
+
+.carro-header-top {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 70px;
+}
+
+.carro-header-top h2 {
+    font-weight: bold;
+}
+
+
+.carro-header-productes {
+    max-width: 80%;
+    min-width: 80%;
+    min-height: auto;
+    max-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    overflow-y: scroll; /* O overflow: auto */
+    scrollbar-width: none;
+}
+
+.carro-header-producte {
+    display: flex;
+    gap: 30px;
+}
+
+.carro-header-producte img{
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.carro-header-producte-dades {
+    width: 100%;
+}
+
+.carro-header-producte-dades div{
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.carro-header-producte div h3 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+.carro-header-bottom {
+    width: 100%;
+    border-top: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carro-header-subtotal {
+    padding-top: 20px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.carro-header-buttons {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.carro-header-buttons button{
+    width: 180px;
+    height: 40px;
+    font-size: 0.8rem;
+}
+
+#carro-header-tramitar {
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: bold;
+}
+
+#carro-header-tramitar:hover {
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+}
+
+#carro-header-carro-link {
+    border: none;
+    background-color: #FDBE10;
+    color: black;
+    font-weight: bold;
+}
+
+#carro-header-carro-link:hover {
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+}
