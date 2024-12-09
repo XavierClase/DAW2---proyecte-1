@@ -17,50 +17,58 @@
     <link rel="stylesheet" href="assets/css/perfil.css">
 </head>
 <body>
-    <?php
-        ob_start();
-        include_once('config/parameters.php');
-        include_once('controllers/homeController.php');
-        include_once('controllers/cartaController.php');   
-        include_once('controllers/detallsProducteController.php'); 
-        include_once('controllers/carroController.php');
-        include_once('controllers/autenticacioController.php');
-        include_once('controllers/sessioController.php');   
-        include_once('controllers/checkoutController.php');
-        include_once('controllers/perfilController.php');
-        include_once('views/header.php');
+<?php
+    ob_start();
+    include_once('config/parameters.php');  
+    include_once('controllers/carroController.php');
+    include_once('controllers/autenticacioController.php');
+    include_once('views/header.php');
 
+    $default_controller = "home";
+    $default_action = "index";
 
-        $default_controller = "home";
-        $default_action = "index";
+    $nom_controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : $default_controller . 'Controller';
+    $action = isset($_GET['action']) ? $_GET['action'] : $default_action;
 
-        $nombre_controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : $default_controller . 'Controller';
-        $action = isset($_GET['action']) ? $_GET['action'] : $default_action;
+    $controller_file = 'controllers/' . $nom_controller . '.php';
+    if (file_exists($controller_file)) {
+        include_once($controller_file);
 
-        if (class_exists($nombre_controller)) {
-            $controller = new $nombre_controller();
-
-            if (method_exists($controller, $action)) {
-                if ($action === 'categoria' && isset($_GET['categoria'])) {
-                    $controller->$action($_GET['categoria']); 
-                } elseif ($action === 'seleccioProducte' && isset($_GET['idProducte'])) {
-                    $controller->$action($_GET['idProducte']);
-                } else {
-                    $controller->$action(); 
-                }
+        if (class_exists($nom_controller)) {
+            $controller = new $nom_controller();
+    
+            if ($action === 'categoria' && isset($_GET['categoria'])) {
+                $controller->$action($_GET['categoria']);
+            } elseif ($action === 'seleccioProducte' && isset($_GET['idProducte'])) {
+                $controller->$action($_GET['idProducte']);
             } else {
-                echo "No existe la acción " . $action . " en el controlador " . $nombre_controller;
+                $controller->$action(); 
             }
         } else {
-            echo "No existe el controlador " . $nombre_controller;
+            echo "No existeix el controlador " . $nom_controller;
         }
+    } else {
+        echo "No exisetix l'arxiu " . $controller_file;
+    }
+    
 
-        include_once('views/footer.php');
-        ob_end_flush();
-    ?>
+    include_once('views/footer.php');
+    ob_end_flush();
 
+
+
+?>
 
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+    

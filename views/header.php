@@ -118,7 +118,7 @@
         <div class="carro-header-bottom">
             <div class="carro-header-subtotal">
                 <p>SUBTOTAL:</p>
-                <P><?=$_SESSION['carro_total']?></P>
+                <P><?=$_SESSION['carro_total']?> €</P>
             </div>
             <div class="carro-header-buttons">
                 <a href="?controller=checkout&action=index">
