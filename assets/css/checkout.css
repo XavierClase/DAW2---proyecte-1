@@ -1,3 +1,47 @@
 .checkout-main {
     min-height: 78vh;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fons semitransparent */
+    z-index: 1050; /* Per assegurar que el modal estigui sobre altres elements */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex; /* Mostra el modal amb flexbox per centrar el contingut */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-dialog {
+    background: #fff; /* Fons del modal */
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Ombra per destacar el modal */
+    z-index: 1100; /* Assegura que el modal-dialog estigui al davant */
+}
+
+/* Evita que el modal bloquegi la interacció */
+.modal input, .modal button, .modal select, .modal textarea {
+    z-index: 1101; /* Elements interactius dins del modal */
+    pointer-events: auto;
+}
+
+/* Animació */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

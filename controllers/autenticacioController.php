@@ -14,7 +14,6 @@
         }
 
         public function createUsuari() {
-
             $nom = $_POST['nom'];
             $cognoms = $_POST['cognoms'];
             $correu = $_POST['correu'];
@@ -35,14 +34,17 @@
                     header('Location: ?controller=autenticacio&action=registre');
                     exit;
                 } else {
+                    $contraEncriptada = password_hash($contra, PASSWORD_DEFAULT);
+        
                     $usuari = new Usuari();
                     $usuari->setNom($nom);
                     $usuari->setCognoms($cognoms);
                     $usuari->setCorreu_electronic($correu);
-                    $usuari->setContrasenya($contra);
+                    $usuari->setContrasenya($contraEncriptada);
                     $usuari->setTelefon($telefon);
                     $usuari->setData_naixement($dataNaixement);
         
+                    // Guardar el usuario en la base de datos
                     UsuariDao::registre($usuari);
         
                     header('Location:?controller=autenticacio&action=login');
@@ -55,23 +57,27 @@
         public function loginUsuari() {
             $correu = $_POST['correuLogin'];
             $contra = $_POST['contrasenyaLogin'];
-
-            $usuari = usuariDao::getUsuaris($correu);
-
+        
+            $usuari = UsuariDao::getUsuaris($correu);
+        
             if (count($usuari) != 1) {
                 $_SESSION['error_usuari'] = "L'usuari no existeix";
-                header('Location:?controller=autenticacio&action=login');                
+                header('Location:?controller=autenticacio&action=login');
+                exit;
             } else {
-                if ($usuari[0]->getContrasenya() != $contra) {
+                $contraEncriptada = $usuari[0]->getContrasenya();
+        
+                if (!password_verify($contra, $contraEncriptada)) {
                     $_SESSION['error_contra'] = "Contrasenya incorrecta";
-                    header('Location:?controller=autenticacio&action=login');         
+                    header('Location:?controller=autenticacio&action=login');
+                    exit;
                 } else {
                     sessioController::iniciarSesio($usuari[0]);
                     header('Location: index.php');
-                    exit; 
+                    exit;
                 }
             }
-            
         }
+        
     }
 ?>

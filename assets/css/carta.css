@@ -114,3 +114,20 @@
     color: #222222;
     font-weight: bold;
 }
+
+.carta-productes-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.carta-productes-row .col-sm-4 {
+    max-width: 33.333%;
+    flex: 0 0 33.333%;
+}
+
+.carta-productes-row .col-sm-4.invisible {
+    visibility: hidden; 
+    height: 0; 
+}

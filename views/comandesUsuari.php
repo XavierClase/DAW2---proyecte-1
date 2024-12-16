@@ -13,21 +13,15 @@
                     <?php foreach ($comandes as $comanda) { ?>
                         <div class="col-md-3" id="comanda-perfil">
                             <div id="comanda-top">
-                                <!-- Aquí mostramos el número de la comanda con su ID -->
                                 <h3>Comanda Num <?= $comanda->getID_Pedido(); ?></h3>
                                 <span>
-                                    <!-- Aquí mostramos el precio de la comanda -->
                                     <strong id="comanda-top-preu"><?= $comanda->getTotal(); ?> €</strong>
-                                    <!-- Aquí mostramos el método de pago -->
                                     <strong>Pagament: <?= $comanda->getMetode_pagament(); ?></strong>
                                 </span>
                             </div>
                             <div id="comanda-bottom">
-                                <!-- Aquí mostramos el estado de la comanda -->
                                 <h4>Estat: <?= $comanda->getEstat(); ?></h4>
-                                <!-- Aquí mostramos la fecha de la comanda -->
                                 <p>Data Comanda: <?= $comanda->getData_Hora(); ?></p>
-                                <!-- Aquí mostramos la dirección -->
                                 <p>Destí: <?= $comanda->getDireccio(); ?></p>
                             </div>
                         </div>

@@ -1,6 +1,8 @@
 <?php
     include_once 'models/Usuari.php';
     include_once 'models/UsuariDao.php';
+    include_once 'models/Comanda.php';
+    include_once 'models/ComandaDao.php';
 final class perfilController {
     
     public static function index() {

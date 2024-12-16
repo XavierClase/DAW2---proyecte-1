@@ -27,22 +27,31 @@
             </div>
         </div>
         
-        <div class="row">
-            <?php
-                foreach ($productes as $producte) {
-            ?>
-                <div class="col-sm-4">
-                    <div class="producte">
-                            <a href="?controller=detallsProducte&action=seleccioProducte&idProducte=<?=$producte->getID_PRODUCTE()?>">
-                                <div class="producte-imatge" style="background-image: url('<?=$producte->getImatge()?>');">
-                                </div>
-                            </a>
-                            <a href="#"><h3><?=$producte->getNom()?></h3></a>
-                            <p><?=$producte->getPreu()?>€</p>
-                    </div> 
-                </div>
-            <?php } ?>
+        <div class="row carta-productes-row">
+    <?php foreach ($productes as $producte) { ?>
+        <div class="col-sm-4">
+            <div class="producte">
+                <a href="?controller=detallsProducte&action=seleccioProducte&idProducte=<?=$producte->getID_PRODUCTE()?>">
+                    <div class="producte-imatge" style="background-image: url('<?=$producte->getImatge()?>');">
+                    </div>
+                </a>
+                <a href="?controller=detallsProducte&action=seleccioProducte&idProducte=<?=$producte->getID_PRODUCTE()?>"><h3><?=$producte->getNom()?></h3></a>
+                <p><?=$producte->getPreu()?>€</p>
+            </div> 
         </div>
+    <?php } ?>
+    <?php
+    // Añadir columnas vacías si hay menos de 3 productos
+    $productes_count = count($productes);
+    if ($productes_count < 3) {
+        for ($i = 0; $i < 3 - $productes_count; $i++) { ?>
+            <div class="col-sm-4 invisible"></div>
+        <?php }
+    }
+    ?>
+</div>
+
+
         
 
 

@@ -53,7 +53,8 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Crear compte</button>
+            <a href="?controller=autenticacio&action=login"><button type="submit" class="btn btn-primary mt-3">Crear compte</button></a>
+            
         </form>
     </div>
 </main>

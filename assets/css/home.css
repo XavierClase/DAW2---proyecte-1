@@ -1,13 +1,12 @@
 .carrusel-container {
-    height: 84vh;
-    background-color: chocolate;
+    height: 85vh;
 }
 
 #carouselExampleAutoplaying {
     height: 100%;
 }
 .carousel-inner {
-    max-height: 84vh;
+    max-height: 85vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -18,13 +17,14 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex-wrap: wrap; 
 }
 
-
 .home-section1 div {
-    position: relative; 
-    min-width: 420px;
-    min-height: 420px;
+    position: relative;
+    width: 100%;  
+    aspect-ratio: 1; 
+    max-width: 420px; 
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -40,7 +40,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 1%, rgba(0, 0, 0, 0) 40%); /* Color con opacidad ajustable */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 1%, rgba(0, 0, 0, 0) 40%);
     z-index: 1; 
 }
 
@@ -49,7 +49,7 @@
     z-index: 2;
 }
 
-.home-section-links{
+.home-section-links {
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -78,6 +78,7 @@
 }
 
 
+
 .home-section2 {
     min-height: 530px;
     display: flex;
@@ -87,6 +88,7 @@
 .home-section2 div {
     min-width: 540px;
     min-height: 370px;
+    max-width: 540px;
     max-height: 370px;
     display: flex;
     flex-direction: column;
@@ -216,4 +218,16 @@
 
 #home-section1-cerveses {
     background-image: url(../imatges/productes/begudes/cerveses/cervesa-san-miguel.webp);
+}
+
+@media (max-width: 1080px) {
+    
+    .home-section2 {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        gap: 30px;
+    }
+
 }

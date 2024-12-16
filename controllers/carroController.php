@@ -1,6 +1,7 @@
 <?php
     include_once 'models/Producte.php';
     include_once 'models/ProducteDao.php';
+    include_once 'models/PromocioDao.php';
     class carroController {
 
         public function index() {
@@ -66,16 +67,76 @@
         
 
         public function eliminar() {
-            
             $producte_id = $_GET['id'] ?? null;
-
+        
             if ($producte_id && isset($_SESSION['carro'][$producte_id])) {
+                $preu_producte = $_SESSION['carro'][$producte_id]['preu'];
+                $quantitat_producte = $_SESSION['carro'][$producte_id]['quantitat'];
+        
+                $_SESSION['carro_total'] -= $preu_producte * $quantitat_producte;
+        
                 unset($_SESSION['carro'][$producte_id]);
             }
-
+        
             header('Location: ?controller=carro&action=index');
         }
+        
 
+        public function sumarQuantitat() {
+            $producte_id = $_GET['id'] ?? null;
+        
+            if ($producte_id && isset($_SESSION['carro'][$producte_id])) {
+                $preu_producte = $_SESSION['carro'][$producte_id]['preu'];
+                $quantitat_antiga = $_SESSION['carro'][$producte_id]['quantitat'];
+        
+                $_SESSION['carro'][$producte_id]['quantitat']++;
+        
+                $_SESSION['carro_total'] -= $preu_producte * $quantitat_antiga; 
+                $_SESSION['carro_total'] += $preu_producte * $_SESSION['carro'][$producte_id]['quantitat']; 
+            }
+        
+            header('Location: ?controller=carro&action=index');
+        }
+        
+
+        public function restarQuantitat() {
+            $producte_id = $_GET['id'] ?? null;
+        
+            if ($producte_id && isset($_SESSION['carro'][$producte_id])) {
+                $preu_producte = $_SESSION['carro'][$producte_id]['preu'];
+                $quantitat_antiga = $_SESSION['carro'][$producte_id]['quantitat'];
+        
+                if ($quantitat_antiga > 1) {
+                    $_SESSION['carro'][$producte_id]['quantitat']--;
+                }
+        
+                $_SESSION['carro_total'] -= $preu_producte * $quantitat_antiga; 
+                $_SESSION['carro_total'] += $preu_producte * $_SESSION['carro'][$producte_id]['quantitat']; 
+            }
+        
+            header('Location: ?controller=carro&action=index');
+        }
+        
+        public function promocio() {
+            $codiComprovar = $_POST['codiPromocional'] ?? null;
+        
+            if ($codiComprovar) {
+                $promocio = PromocioDao::comprovarPromocio($codiComprovar);
+                
+                if ($promocio) {
+                    $descompte = $promocio->Descompte; 
+        
+                    $_SESSION['carro_total'] -= ($_SESSION['carro_total'] * ($descompte / 100));
+                    
+                    $_SESSION['promocio_aplicada'] = "Codi promocional aplicat! Descompte del $descompte% aplicat al total.";
+                } else {
+                    $_SESSION['error_promocio'] = "Codi promocional no vàlid.";
+                }
+            }
+        
+            header(header: 'Location: ?controller=carro&action=index');
+        }
+        
     
         // public function clear() {
         //     unset($_SESSION['carrito']);

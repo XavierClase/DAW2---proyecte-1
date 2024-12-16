@@ -3,22 +3,25 @@
         <div class="row">
             <div class="col-md-6">
                 <h1 class="mb-4">ENVIAMENT</h1>
-                <form id="checkout-form" action="?controller=checkout&action=checkout" method="POST">
-                    <!-- Camps del formulari -->
+                <form action="?controller=checkout&action=checkout" method="POST">
                     <div class="row mb-3">
                         <label class="form-label">Adreça d'enviament</label>
                         <div class="col-md-6">
                             <input type="text" class="form-control" placeholder="Nom *" name="nom" value="<?=$nomUsuari?>" required>
+                            <div class="text-danger small mt-1 d-none">Camp obligatori.</div>
                         </div>
                         <div class="col-md-6">
                             <input type="text" class="form-control" placeholder="Cognoms *" name="cognoms" value="<?=$cognomsUsuari?>" required>
+                            <div class="text-danger small mt-1 d-none">Camp obligatori.</div>
                         </div>
                     </div>
                     <div class="mb-3">
                         <input type="email" class="form-control" placeholder="Correu Elèctronic *" name="correu" value="<?=$correuUsuari?>" required>
+                        <div class="text-danger small mt-1 d-none">Camp obligatori.</div>
                     </div>
                     <div class="mb-3">
                         <input type="text" class="form-control" placeholder="Adreça completa *" name="adreca" required>
+                        <div class="text-danger small mt-1 d-none">Camp obligatori.</div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-12">
@@ -27,22 +30,25 @@
                                 <option>Catalunya</option>
                                 <option>Madrid</option>
                             </select>
+                            <div class="text-danger small mt-1 d-none">Camp obligatori.</div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <input type="text" class="form-control" placeholder="Codi postal *" name="codiPostal" required>
+                            <div class="text-danger small mt-1 d-none">Camp obligatori.</div>
                         </div>
                         <div class="col-md-6">
                             <input type="text" class="form-control" placeholder="Ciutat *" name="ciutat" required>
+                            <div class="text-danger small mt-1 d-none">Camp obligatori.</div>
                         </div>
                     </div>
                     <div class="mb-3">
                         <input type="tel" class="form-control" placeholder="Telèfon *" name="telefon" value="<?=$telefonUsuari?>" required>
+                        <div class="text-danger small mt-1 d-none">Camp obligatori.</div>
                     </div>
                     <div class="text-center mt-4">
-                        <button type="submit" name="pagament" value="efectiu" class="btn btn-primary btn-lg">Pagar en persona</button>
-                        <button type="button" id="pay-online-button"  value="online" class="btn btn-primary btn-lg">Pagar ja</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Pagar en persona</button>
                     </div>
                 </form>
             </div>
@@ -76,31 +82,3 @@
         </div>
     </div>
 </main>
-
-<!-- Modal per Pagament Online -->
-<div id="payment-modal" class="modal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <h3>Informació de la Targeta</h3>
-        <form id="payment-form">
-            <div class="mb-3">
-                <label for="card-number" class="form-label">Número de la targeta</label>
-                <input type="text" id="card-number" class="form-control" maxlength="16" placeholder="1234 5678 9012 3456" required>
-            </div>
-            <div class="mb-3">
-                <label for="expiry-date" class="form-label">Data de caducitat</label>
-                <input type="text" id="expiry-date" class="form-control" maxlength="5" placeholder="MM/YY" required>
-            </div>
-            <div class="mb-3">
-                <label for="cvv" class="form-label">CVV</label>
-                <input type="text" id="cvv" class="form-control" maxlength="3" placeholder="123" required>
-            </div>
-            <div class="d-flex justify-content-end">
-                <button type="button" id="cancel-payment" class="btn btn-secondary me-2">Cancel·lar</button>
-                <button type="button" id="confirm-payment" class="btn btn-primary">Confirmar Pagament</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-<script src="assets/scripts/pagamentTarja.js"></script>

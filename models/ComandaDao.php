@@ -12,7 +12,7 @@ class ComandaDao {
         $con->begin_transaction();
 
         try {
-            $stmt = $con->prepare("INSERT INTO Pedido (ID_Usuari, Data_Hora, Estat, Metode_pagament, Total, direccio) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt = $con->prepare("INSERT INTO Pedido (ID_Usuari, Data_Hora, Estat, Metode_pagament, Total, direccio, Nom_client, Telefon_client, Correu_client) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             $ID_Usuari = (int)$comanda->getID_Usuari();
             $Data_Hora = (string)$comanda->getData_Hora(); 
@@ -20,10 +20,13 @@ class ComandaDao {
             $Metode_pagament = (string)$comanda->getMetode_pagament();
             $Total = (float)$comanda->getTotal();
             $direccio = (string)$comanda->getDireccio();
+            $Nom_client = (string)$comanda->getNom_client();
+            $Telefon_client = (string)$comanda->getTelefon_client();
+            $Correu_client = (string)$comanda->getCorreu_client();
 
             
 
-            $stmt->bind_param("isssds", $ID_Usuari, $Data_Hora, $Estat, $Metode_pagament, $Total, $direccio);
+            $stmt->bind_param("isssdssss", $ID_Usuari, $Data_Hora, $Estat, $Metode_pagament, $Total, $direccio, $Nom_client, $Telefon_client, $Correu_client);
 
             if (!$stmt->execute()) {
                 throw new Exception("Error al insertar el pedido: " . $stmt->error);
@@ -78,7 +81,7 @@ class ComandaDao {
 
     public static function getComandes($ID_Usuari) {
         $con = DataBase::connect();
-        $stmt = $con->prepare("SELECT * FROM Pedido WHERE ID_Usuari = ?");
+        $stmt = $con->prepare("SELECT ID_Pedido, ID_Usuari, Data_Hora, Estat, Metode_pagament, Total, direccio FROM Pedido WHERE ID_Usuari = ?");
         $stmt->bind_param("i", $ID_Usuari);
         $stmt->execute();
         $result = $stmt->get_result();

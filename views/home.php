@@ -6,10 +6,10 @@
                 <img src="assets/imatges/altres/banner1.webp" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+                <img src="assets/imatges/altres/banner2.webp" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+                <img src="assets/imatges/altres/banner3.webp" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -44,6 +44,8 @@
         </div>
     </section>
 
+    
+
     <section class="home-section2">
         <div id="home-section1-menjarsDeshidratats">
             <a href="?controller=carta&action=categoria&categoria=MENJARS%20DESHIDRATATS" class="home-section-links">
@@ -66,11 +68,11 @@
                 foreach ($productes as $producte) {
             ?>
                 <div class="novetat">
-                        <a href="#">
+                        <a href="?controller=detallsProducte&action=seleccioProducte&idProducte=<?=$producte->getID_PRODUCTE()?>">
                             <div class="novetat-imatge" style="background-image: url('<?=$producte->getImatge()?>');">
                             </div>
                         </a>
-                        <a href="#"><h3><?=$producte->getNom()?></h3></a>
+                        <a href="?controller=detallsProducte&action=seleccioProducte&idProducte=<?=$producte->getID_PRODUCTE()?>"><h3><?=$producte->getNom()?></h3></a>
                         <p><?=$producte->getPreu()?>€</p>
                     </div> 
             <?php } ?>          

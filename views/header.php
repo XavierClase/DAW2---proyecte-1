@@ -20,7 +20,7 @@
                     <label for="toggle" class="menu-button"><?=$_SESSION['usuari']->getNom() . ' ' . $_SESSION['usuari']->getCognoms()?> V</label>
                     <div class="header-loged-links">
                         <a href="?controller=perfil&action=index">MI CUENTA</a>
-                        <a href="#">LES MEVES COMANDES</a>
+                        <a href="?controller=perfil&action=mostrarComandes">LES MEVES COMANDES</a>
                         <a href="?controller=sessio&action=tancarSessio">CERRAR SESIÓN</a>
                     </div>
                 </div>
@@ -91,6 +91,8 @@
     </nav>    
 </section>
 
+
+    <!------ CARRO ------>
 <section class="carro-header">
     <div class="carro-header-top">
         <h2>El teu carro</h2>

@@ -33,7 +33,9 @@
                     <h4>Nous clients</h4>
                     <p>Crea un compte per ganar comoditat a les teves compres.</p>
                     <div class="mb-3">
-                        <button type="button" class="btn btn-primary mt-3">Crear compte</button>
+                        <a href="?controller=autenticacio&action=registre">
+                            <button type="button" class="btn btn-primary mt-3">Crear compte</button>
+                        </a>
                     </div>
                 </div>
             </div>
