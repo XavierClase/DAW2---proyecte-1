@@ -6,11 +6,13 @@
     class autenticacioController {
         
         public function registre() {
-            include_once 'views/registre.php';
+            $vista = 'views/registre.php';
+            include_once 'views/main.php';
         }
 
         public function login() {
-            include_once 'views/login.php';
+            include_once 'views/main.php';
+            $vista = 'views/login.php';
         }
 
         public function createUsuari() {

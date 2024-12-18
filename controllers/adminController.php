@@ -9,7 +9,8 @@
             if (isset($_SESSION['usuari'])) {
                 $usuari = $_SESSION['usuari'];
                 if ($usuari->getTipus_usuari() === 'administrador') {
-                    include_once 'views/admin/main.php';
+                    $vista = 'views/admin/main.php';
+                    include_once 'views/admin/adminMain.php';
                 } else {
                     include_once 'views/admin/autenticacioAdmin.php';
                 }

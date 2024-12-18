@@ -6,7 +6,9 @@
         public function index() {
             $order = $_GET['order'] ?? 'posicio';
             $productes = ProducteDao::getAll($order);
-            include_once 'views/carta.php';
+
+            $vista = 'views/carta.php';
+            include_once 'views/main.php';
         }
     
         public function categoria($categoria) {
@@ -17,7 +19,10 @@
             
             if ($categoria) {
                 $productes = ProducteDao::getCategoria($categoria, $order);
-                include_once 'views/carta.php';
+                
+
+                $vista = 'views/carta.php';
+                include_once 'views/main.php';
             }
         }
     

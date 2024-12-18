@@ -6,7 +6,10 @@
         public function index()
         {
             $productes = ProducteDao::getNovetats();
-            include_once 'views/home.php';
+            
+            $vista = 'views/home.php';
+
+            include_once 'views/main.php';
         }
     }
 ?>

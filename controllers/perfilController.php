@@ -17,7 +17,8 @@ final class perfilController {
             'telefon' => $_SESSION['usuari']->getTelefon()
         ];
 
-        include_once 'views/perfil.php';
+        $vista = 'views/perfil.php';
+        include_once 'views/main.php';
         
     }
 
@@ -34,7 +35,8 @@ final class perfilController {
     
         $canviarContrasenya = isset($_GET['canviarContrasenya']) && $_GET['canviarContrasenya'] === 'True';
     
-        include_once 'views/modificarUsuari.php';
+        $vista  ='views/modificarUsuari.php';
+        include_once 'views/main.php';
     }
     
 
@@ -84,7 +86,8 @@ final class perfilController {
 
         $comandes = ComandaDao::getComandes($_SESSION['usuari']->getID_Usuari());
         
-        include_once 'views/comandesUsuari.php';
+        $vista =  'views/comandesUsuari.php';
+        include_once 'views/main.php';
     }
     
 }

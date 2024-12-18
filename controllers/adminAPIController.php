@@ -2,7 +2,7 @@
 include_once 'models/Comanda.php';
 include_once 'models/ComandaDao.php';
 
-class adminAPI {
+class adminAPIController {
     public static function getComandas()
     {
         $comandes = ComandaDAO::getAll();

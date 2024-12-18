@@ -15,8 +15,8 @@
             }
 
             
-
-            include_once 'views/carro.php';
+            $vista = 'views/carro.php';
+            include_once 'views/main.php';
         }
 
         public function slide() {

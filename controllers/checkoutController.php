@@ -17,7 +17,8 @@
                 $correuUsuari = null;
             }
     
-            include_once('views/checkout.php');
+            $vista = 'views/checkout.php';
+            include_once 'views/main.php' ;
         } 
         public function checkout() {
             $carro = $_SESSION['carro'];

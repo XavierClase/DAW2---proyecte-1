@@ -7,7 +7,8 @@
         public function seleccioProducte($idProducte) {
             $producte = ProducteDao::getProducte($idProducte);
 
-            include_once 'views/detallsProducte.php';
+            $vista = 'views/detallsProducte.php';
+            include_once 'views/main.php';
         }
     
     }
