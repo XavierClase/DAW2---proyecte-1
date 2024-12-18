@@ -105,4 +105,32 @@ class ComandaDao {
         return $comandes;
     }
 
+    public static function getAll() {
+        $con = DataBase::connect();
+        $stmt = $con->prepare("SELECT * FROM Pedido");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $comandes = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $comanda = new Comanda(
+                $row['ID_Pedido'], 
+                $row['ID_Usuari'], 
+                $row['Data_Hora'], 
+                $row['Estat'], 
+                $row['Metode_pagament'], 
+                $row['Total'], 
+                $row['direccio'],
+                $row['Nom_client'],
+                $row['Telefon_client'],
+                $row['Correu_client']
+            );
+            $comandes[] = $comanda;
+        }
+
+        $stmt->close();
+        $con->close();
+        return $comandes;
+    }
+
 }

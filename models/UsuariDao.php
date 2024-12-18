@@ -53,6 +53,8 @@
             return $usuaris;
         }
 
+        
+
         public static function getID($nomUsuari)
         {
             $con = DataBase::connect();

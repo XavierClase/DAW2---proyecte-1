@@ -12,7 +12,8 @@
         protected $Telefon_client;
         protected $Correu_client;
 
-        public function __construct($ID_Pedido = null, $ID_Usuari, $Data_Hora, $Estat, $Metode_pagament, $Total, $direccio, $Nom_client = null, $Telefon_client = null, $Correu_client = null) {
+        public function __construct($ID_Pedido = null, $ID_Usuari, $Data_Hora, $Estat, $Metode_pagament, $Total, $direccio, $Nom_client = null, $Telefon_client = null, $Correu_client = null) 
+        {
                 $this->ID_Pedido = $ID_Pedido !== null ? (int)$ID_Pedido : null; 
                 $this->ID_Usuari = (int)$ID_Usuari;
                 $this->Data_Hora = (string)$Data_Hora;
@@ -227,9 +228,23 @@
 
                 return $this;
         }
+
+
+        public function toArray()
+        {
+                return [
+                'ID_Pedido' => $this->ID_Pedido,
+                'ID_Usuari' => $this->ID_Usuari,
+                'Data_Hora' => $this->Data_Hora,
+                'Estat' => $this->Estat,
+                'Metode_pagament' => $this->Metode_pagament,
+                'Total' => $this->Total,
+                'Direccio' => $this->direccio,
+                'Nom_client' => $this->Nom_client,
+                'Telefon_client' => $this->Telefon_client,
+                'Correu_client' => $this->Correu_client
+                ];
+        }
     }
     
-
-
-
 ?>

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/registre.css">
     <link rel="stylesheet" href="assets/css/checkout.css">
     <link rel="stylesheet" href="assets/css/perfil.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
 </head>
 <body>
 <?php
@@ -22,12 +23,20 @@
     include_once('config/parameters.php');  
     include_once('controllers/carroController.php');
     include_once('controllers/autenticacioController.php');
-    include_once('views/header.php');
+    
+    if (!isset($_GET['controller']) || $_GET['controller'] !== 'admin') {
+        include_once('views/header.php');
+    }
 
     $default_controller = "home";
     $default_action = "index";
 
-    $nom_controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : $default_controller . 'Controller';
+    if (isset($_GET['controller']) && $_GET['controller'] === 'adminAPI') {
+        $nom_controller = 'adminAPI';
+    } else {
+        $nom_controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : $default_controller . 'Controller';
+    }
+
     $action = isset($_GET['action']) ? $_GET['action'] : $default_action;
 
     $controller_file = 'controllers/' . $nom_controller . '.php';
@@ -50,25 +59,16 @@
     } else {
         echo "No exisetix l'arxiu " . $controller_file;
     }
-    
 
-    include_once('views/footer.php');
+    if (!isset($_GET['controller']) || $_GET['controller'] !== 'admin') {
+        include_once('views/footer.php');
+    }
+
     ob_end_flush();
-
-
-
 ?>
+
 
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-    
