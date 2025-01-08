@@ -11,8 +11,8 @@
         }
 
         public function login() {
-            include_once 'views/main.php';
             $vista = 'views/login.php';
+            include_once 'views/main.php';
         }
 
         public function createUsuari() {
@@ -46,7 +46,6 @@
                     $usuari->setTelefon($telefon);
                     $usuari->setData_naixement($dataNaixement);
         
-                    // Guardar el usuario en la base de datos
                     UsuariDao::registre($usuari);
         
                     header('Location:?controller=autenticacio&action=login');

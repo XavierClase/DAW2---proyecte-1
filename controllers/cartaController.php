@@ -47,10 +47,10 @@
                     $descripcioCategoria = "Begudes fresques i clàssiques, ideals per acompanyar qualsevol àpat o per prendre durant el dia. Des de refrescs tradicionals fins a opcions amb tocs originals.";
                     break;
                 case 'POSTRES RURALS':
-                    $descripcioCategoria = "Delícies artesanals amb ingredients autèntics del camp, des de pastissos fins a galetes fetes amb receptes antigues. Són postres que capturen l’essència de la cuina rural, ideals per als amants dels sabors de sempre.";
+                    $descripcioCategoria = "Delícies artesanals amb ingredients autèntics del camp, des de pastissos fins a galetes fetes amb receptes antigues. Són postres que capturen l'essència de la cuina rural, ideals per als amants dels sabors de sempre.";
                     break;
                 case 'POSTRES CLASICS':
-                    $descripcioCategoria = "Dolços de tota la vida, aquells que sempre trobem a casa de l’àvia. Des de flams fins a pudins, són postres senzills però plens de records i sabor.";
+                    $descripcioCategoria = "Dolços de tota la vida, aquells que sempre trobem a casa de l'àvia. Des de flams fins a pudins, són postres senzills però plens de records i sabor.";
                     break;
                 default:
                     $descripcioCategoria = "";

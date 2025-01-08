@@ -107,4 +107,21 @@
 
                 return $this;
         }
+
+
+
+        public function toArray()
+        {
+            return [
+                'ID_Usuari' => $this->ID_Usuari,
+                'Nom' => $this->Nom,
+                'Cognoms' => $this->Cognoms,
+                'Correu_electronic' => $this->Correu_electronic,
+                'Contrasenya' => $this->Contrasenya,
+                'Telefon' => $this->Telefon,
+                'Data_naixement' => $this->Data_naixement,
+                'Tipus_usuari' => $this->Tipus_usuari
+            ];
+        }
+
     }

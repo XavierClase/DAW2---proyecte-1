@@ -4,7 +4,6 @@
             <div class="col-md-6">
                 <h1 class="mb-4">ENVIAMENT</h1>
                 <form id="checkout-form" action="?controller=checkout&action=checkout" method="POST">
-                    <!-- Camps del formulari -->
                     <div class="row mb-3">
                         <label class="form-label">Adreça d'enviament</label>
                         <div class="col-md-6">
@@ -77,7 +76,6 @@
     </div>
 </main>
 
-<!-- Modal per Pagament Online -->
 <div id="payment-modal" class="modal" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <h3>Informació de la Targeta</h3>

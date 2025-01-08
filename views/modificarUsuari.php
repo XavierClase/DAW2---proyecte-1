@@ -1,7 +1,6 @@
 <main class="modificarUsuari-main">
     <div id="barra-lateral-perfil" class="container mt-5 perfil-main">
         <div class="row">
-            <!-- Barra lateral -->
             <div class="col-md-3" id="barraLateral-pefil">
                 <ul class="list-group">
                     <li class="list-group-item active"><a href="?controller=perfil&action=index">El Meu Perfil</a></li>
@@ -10,7 +9,6 @@
                 </ul>
             </div>
 
-            <!-- Formulario principal -->
             <div class="col-md-9">
                 <h3>Informació del compte</h3>
                 <form action="?controller=perfil&action=updateUsuari" method="POST">
@@ -36,7 +34,6 @@
                             </div>
                         </div>
 
-                        <!-- Cambio de contraseña (opcional) -->
                         <?php if (isset($_GET['canviarContrasenya']) && $_GET['canviarContrasenya'] === 'True'): ?>
                         <div class="col-md-6">
                             <h4>Canviar la Contrasenya</h4>
@@ -56,7 +53,6 @@
                         <?php endif; ?>
                     </div>
 
-                    <!-- Botón de guardar -->
                     <div class="d-flex justify-content-between">
                         <button type="submit" name="action" value="update_info" class="btn btn-primary">Desar Canvis</button>
                     </div>

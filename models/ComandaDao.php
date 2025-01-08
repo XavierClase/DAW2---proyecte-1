@@ -133,4 +133,26 @@ class ComandaDao {
         return $comandes;
     }
 
+    public static function modificarEstat($ID_Comanda, $nouEstat) {
+        $con = DataBase::connect();
+        $stmt = $con->prepare("UPDATE Pedido SET Estat = ? WHERE ID_Pedido = ?");
+        $stmt->bind_param("si", $nouEstat, $ID_Comanda);
+        $stmt->execute();
+        $stmt->close();
+        $con->close();
+    }
+
+    public static function delComanda($ID_Comanda) {
+        $con = DataBase::connect();
+        $stmt = $con->prepare("DELETE FROM Detalls_Pedido WHERE ID_Pedido = ?");
+        $stmt->bind_param("i", $ID_Comanda);
+        $stmt->execute();
+
+        $stmt = $con->prepare("DELETE FROM Pedido WHERE ID_Pedido = ?");
+        $stmt->bind_param("i", $ID_Comanda);
+        $stmt->execute();
+        $stmt->close();
+        $con->close();
+    }
+
 }

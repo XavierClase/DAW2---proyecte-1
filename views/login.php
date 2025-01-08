@@ -1,6 +1,6 @@
 <main class="login-main">
     <div class="container mt-5">
-        <h1 class="mb-4">Inici de sesió de client</h1>
+        <h1 class="mb-4">Inici de sessió de client</h1>
         <form action="?controller=autenticacio&action=loginUsuari" method="POST">
             <div class="row">
 

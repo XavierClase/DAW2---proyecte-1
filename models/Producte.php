@@ -110,6 +110,23 @@
 
                 return $this;
         }
+
+
+
+        public function toArray()
+        {
+                return [
+                        'ID_Producte' => $this->ID_Producte,
+                        'Nom' => $this->nom,
+                        'Descripcio' => $this->descripcio,
+                        'Preu' => $this->preu,
+                        'Categoria' => $this->categoria,
+                        'Disponibilitat' => $this->disponibilitat,
+                        'Descompte' => $this->descompte,
+                        'Imatge' => $this->imatge
+                ];
+        }
+
     }
 
 ?>

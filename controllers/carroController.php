@@ -138,9 +138,4 @@
         }
         
     
-        // public function clear() {
-        //     unset($_SESSION['carrito']);
-        //     header("Location: index.php?controller=carrito&action=index");
-        // }
-    
     }

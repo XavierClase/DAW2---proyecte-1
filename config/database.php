@@ -5,7 +5,7 @@
             $con = new mysqli($host,$user,$pass,$db, $port);
 
             if ($con === false) {
-                die("ERROR!¡!¡!¡!: No te puedes conectar a la bbdd (poner codgio de error sin que de error)");
+                die("ERROR: No te puedes conectar a la bbdd");
             } else {
                 return $con;
             }

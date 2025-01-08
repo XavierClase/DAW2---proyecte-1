@@ -108,4 +108,54 @@
 
             $stmt->close();
         }
+
+        public static function getAll() {
+            $con = DataBase::connect();
+            $stmt = $con->prepare("SELECT * FROM Usuaris");
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $usuaris = [];
+    
+            while ($row = $result->fetch_assoc()) {
+                $usuari = new Usuari();
+                $usuari->setID_Usuari($row['ID_Usuari']);
+                $usuari->setNom($row['Nom']);
+                $usuari->setCognoms($row['Cognoms']);
+                $usuari->setCorreu_electronic($row['Correu_electronic']);
+                $usuari->setContrasenya($row['Contrasenya']);
+                $usuari->setTelefon($row['Telefon']);
+                $usuari->setData_naixement($row['Data_naixement']);
+                $usuari->setTipus_usuari($row['Tipus_usuari']);
+                
+                $usuaris[] = $usuari;
+            }
+    
+            $stmt->close();
+            $con->close();
+    
+            return $usuaris;
+        }
+
+        public static function delUser($ID_Usuari) {
+            $con = DataBase::connect();
+            $stmt = $con->prepare("DELETE FROM Usuaris WHERE ID_Usuari = ?");
+            $stmt->bind_param("i", $ID_Usuari);
+            $stmt->execute();
+            $stmt->close();
+        }
+
+        public static function modUserByAdmin($ID_Usuari, $nouNom, $nouCognom, $nouCorreu, $nouTelefon, $nouData_naixement, $nouTipus)
+        {
+            $con = DataBase::connect();
+
+            $stmt = $con->prepare("UPDATE Usuaris SET Nom = ?, Cognoms = ?, Correu_electronic = ?, Telefon = ?, Data_naixement = ?, Tipus_usuari = ? WHERE ID_Usuari = ?");
+
+            $stmt->bind_param("sssssss", $nouNom, $nouCognom, $nouCorreu, $nouTelefon, $nouData_naixement, $nouTipus, $ID_Usuari);
+
+            $stmt->execute();
+
+            $stmt->close();
+        }
+
+        
     }
